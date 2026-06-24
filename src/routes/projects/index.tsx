@@ -75,45 +75,51 @@ function ProjectsPage() {
       <section className="container-x py-16">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) => (
-            <article key={p.id} className="group flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-shadow hover:shadow-xl">
-              <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
-                <img src={p.image} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
-                <div className="absolute left-4 top-4 inline-flex items-center rounded-sm bg-background/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
-                  {p.badge}
-                </div>
-                <div className="absolute bottom-4 right-4 rounded-sm bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gold-foreground">
-                  {p.status}
-                </div>
-              </div>
-              <div className="flex flex-1 flex-col p-6">
-                <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">{p.id}</div>
-                <h3 className="mt-2 font-display text-xl text-primary">{p.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{p.location}</p>
-                <p className="text-sm text-muted-foreground">{p.type}</p>
-
-                <div className="mt-5">
-                  <div className="flex justify-between text-[10px] uppercase tracking-wider text-muted-foreground">
-                    <span>Completion</span><span>{p.completion}%</span>
+            <Link
+              to="/projects/$slug"
+              params={{ slug: p.slug }}
+            >
+              <article key={p.id} className="group flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-shadow hover:shadow-xl">
+                <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                  <img src={p.image} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
+                  <div className="absolute left-4 top-4 inline-flex items-center rounded-sm bg-background/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+                    {p.badge}
                   </div>
-                  <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-secondary">
-                    <div className="h-full rounded-full bg-gold" style={{ width: `${p.completion}%` }} />
+                  <div className="absolute bottom-4 right-4 rounded-sm bg-gold px-3 py-1 text-xs font-semibold uppercase tracking-wider text-gold-foreground">
+                    {p.status}
                   </div>
                 </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">{p.id}</div>
+                  <h3 className="mt-2 font-display text-xl text-primary">{p.name}</h3>
+                  <p className="mt-1 text-sm text-muted-foreground">{p.location}</p>
+                  <p className="text-sm text-muted-foreground">{p.type}</p>
 
-                <div className="mt-auto flex items-end justify-between border-t border-border pt-5">
-                  <span className="font-display text-xl text-primary">{p.price}</span>
-                  <Link
-                    to="/projects/$slug"
-                    params={{ slug: p.slug }}
-                    className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-accent"
-                  >
-                    View Details
-                    <ArrowUpRight className="h-3.5 w-3.5" />
-                  </Link>
+                  <div className="mt-5">
+                    <div className="flex justify-between text-[10px] uppercase tracking-wider text-muted-foreground">
+                      <span>Completion</span><span>{p.completion}%</span>
+                    </div>
+                    <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-secondary">
+                      <div className="h-full rounded-full bg-gold" style={{ width: `${p.completion}%` }} />
+                    </div>
+                  </div>
+
+                  <div className="mt-auto flex items-end justify-between border-t border-border pt-5">
+                    <span className="font-display text-xl text-primary">{p.price}</span>
+                    <Link
+                      to="/projects/$slug"
+                      params={{ slug: p.slug }}
+                      className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-accent"
+                    >
+                      View Details
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </Link>
+
           ))}
         </div>
       </section>

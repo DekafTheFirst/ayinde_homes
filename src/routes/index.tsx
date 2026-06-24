@@ -113,87 +113,82 @@ function Home() {
 
       {/* SERVICES */}
       <section className="bg-secondary/50 py-24">
-  <div className="container-x">
-    <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-      <div>
-        <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">
-          What We Do
-        </div>
-        <h2 className="mt-3 font-display text-4xl text-primary md:text-5xl">
-          Our Services
-        </h2>
-        <p className="mt-4 max-w-xl text-muted-foreground">
-          Bespoke real estate solutions designed to provide peace of mind and exceptional value.
-        </p>
-      </div>
+        <div className="container-x">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">
+                What We Do
+              </div>
+              <h2 className="mt-3 font-display text-4xl text-primary md:text-5xl">
+                Our Services
+              </h2>
+              <p className="mt-4 max-w-xl text-muted-foreground">
+                Bespoke real estate solutions designed to provide peace of mind and exceptional value.
+              </p>
+            </div>
 
-      <Link
-        to="/services"
-        className="text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:text-accent"
-      >
-        All Services →
-      </Link>
-    </div>
-
-    <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
-      {home_services.slice(0, 6).map((s, i) => (
-        <div
-          key={s.title}
-          className={`group relative flex flex-col p-8 transition-colors hover:bg-card ${
-            s.featured
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "bg-background"
-          }`}
-        >
-          {/* Number */}
-          <div
-            className={`font-display text-xs transition-colors ${
-              s.featured
-                ? "text-gold group-hover:text-gold/80"
-                : "text-accent group-hover:text-primary"
-            }`}
-          >
-            0{i + 1}
+            <Link
+              to="/services"
+              className="text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:text-accent"
+            >
+              All Services →
+            </Link>
           </div>
 
-          {/* Title */}
-          <h3
-            className={`mt-6 font-display text-2xl transition-colors ${
-              s.featured
-                ? "text-primary-foreground group-hover:text-white"
-                : "text-primary group-hover:text-black"
-            }`}
-          >
-            {s.title}
-          </h3>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-sm border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+            {home_services.slice(0, 6).map((s, i) => (
+              <div
+                key={s.title}
+                className={`group relative flex flex-col p-8 transition-colors hover:bg-card ${s.featured
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                  : "bg-background"
+                  }`}
+              >
+                {/* Number */}
+                <div
+                  className={`font-display text-xs transition-colors ${s.featured
+                    ? "text-gold group-hover:text-gold/80"
+                    : "text-accent group-hover:text-primary"
+                    }`}
+                >
+                  0{i + 1}
+                </div>
 
-          {/* Description */}
-          <p
-            className={`mt-3 text-sm leading-relaxed transition-colors ${
-              s.featured
-                ? "text-primary-foreground/80 group-hover:text-white/90"
-                : "text-muted-foreground group-hover:text-black/70"
-            }`}
-          >
-            {s.blurb}
-          </p>
+                {/* Title */}
+                <h3
+                  className={`mt-6 font-display text-2xl transition-colors ${s.featured
+                    ? "text-primary-foreground group-hover:text-white"
+                    : "text-primary group-hover:text-black"
+                    }`}
+                >
+                  {s.title}
+                </h3>
 
-          {/* CTA */}
-          <div
-            className={`mt-8 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${
-              s.featured
-                ? "text-primary-foreground group-hover:text-white"
-                : "text-primary group-hover:text-black"
-            }`}
-          >
-            {s.cta}
-            <ArrowUpRight className="h-3.5 w-3.5" />
+                {/* Description */}
+                <p
+                  className={`mt-3 text-sm leading-relaxed transition-colors ${s.featured
+                    ? "text-primary-foreground/80 group-hover:text-white/90"
+                    : "text-muted-foreground group-hover:text-black/70"
+                    }`}
+                >
+                  {s.blurb}
+                </p>
+
+                {/* CTA */}
+                <div
+                  className={`mt-8 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] transition-colors ${s.featured
+                    ? "text-primary-foreground group-hover:text-white"
+                    : "text-primary group-hover:text-black"
+                    }`}
+                >
+                  {s.cta}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* TRUST */}
       <section className="container-x py-24">
@@ -247,29 +242,32 @@ function Home() {
           </div>
           <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {projects.slice(0, 3).map((p) => (
-              <article key={p.id} className="group relative overflow-hidden rounded-sm border border-primary-foreground/10 bg-primary transition-colors hover:border-gold/40">
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={p.image} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
-                  <div className="absolute left-4 top-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-gold">{p.badge}</div>
-                </div>
-                <div className="p-8">
-                  <h3 className="font-display text-2xl">{p.name}</h3>
-                  <p className="mt-2 text-sm text-primary-foreground/65">{p.location}</p>
-                  <p className="text-sm text-primary-foreground/65">{p.type}</p>
-                  <div className="mt-8 flex items-end justify-between border-t border-primary-foreground/10 pt-5">
-                    <span className="font-display text-2xl text-gold">{p.price}</span>
-                    <ArrowUpRight className="h-5 w-5 text-primary-foreground/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              <Link to='/projects/$slug' params={{ slug: p.slug }}>
+                <article key={p.id} className="group relative overflow-hidden rounded-sm border border-primary-foreground/10 bg-primary transition-colors hover:border-gold/40">
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img src={p.image} alt={p.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
+                    <div className="absolute left-4 top-4 text-[10px] font-semibold uppercase tracking-[0.3em] text-gold">{p.badge}</div>
                   </div>
-                </div>
-              </article>
+                  <div className="p-8">
+                    <h3 className="font-display text-2xl">{p.name}</h3>
+                    <p className="mt-2 text-sm text-primary-foreground/65">{p.location}</p>
+                    <p className="text-sm text-primary-foreground/65">{p.type}</p>
+                    <div className="mt-8 flex items-end justify-between border-t border-primary-foreground/10 pt-5">
+                      <span className="font-display text-2xl text-gold">{p.price}</span>
+                      <ArrowUpRight className="h-5 w-5 text-primary-foreground/70 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </div>
+                  </div>
+                </article>
+              </Link>
+
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CTA */}
-      <section className="container-x py-32">
+      < section className="container-x py-32" >
         <div className="grid items-center gap-12 rounded-sm border border-border bg-secondary p-12 lg:grid-cols-12 lg:p-20">
           <div className="lg:col-span-8">
             <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-accent">Get In Touch</div>
@@ -290,7 +288,7 @@ function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </section >
     </>
   );
 }

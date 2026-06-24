@@ -29,7 +29,11 @@ export function SiteHeader() {
               key={n.to}
               to={n.to}
               className="text-sm font-medium text-foreground/70 transition-colors hover:text-primary"
-              activeProps={{ className: "text-primary" }}
+              activeProps={{
+                style: {
+                  color: "#336d59",
+                },
+              }}
               activeOptions={{ exact: n.to === "/" }}
             >
               {n.label}

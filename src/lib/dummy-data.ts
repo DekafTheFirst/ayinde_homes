@@ -381,52 +381,150 @@ We also help clients buy verified and strategically located properties in Nigeri
 
 export const articles = [
   {
+    id: "ART-001",
+    slug: "building-remotely-guide",
+    featured: true,
+
     tag: "FEATURED GUIDE",
+    category: "Construction Tips",
+
+    title:
+      "Building Remotely: A Complete Guide to Long-Distance Project Management",
+
+    excerpt:
+      "Everything diaspora homeowners should know about milestones, contractor accountability, escrow payments, and project verification.",
+
+    author: "Ayinde Homes Editorial Team",
+
+    authorRole: "Project Delivery & Construction",
+
+    publishedAt: "May 18, 2025",
+
     minutes: 12,
-    title: "Building Remotely: A Guide to Long-Distance Project Management",
-    excerpt:
-      "Everything diaspora homeowners should know about milestones, escrow tranches, and visual verification.",
-    category: "Construction Tips",
+
+    image: riverpark,
+
+    seoTitle:
+      "Building a Home in Nigeria While Abroad | Ayinde Homes",
+
+    seoDescription:
+      "Learn how Nigerians in the diaspora can successfully build homes remotely with transparency and accountability.",
+
+    content: [
+      {
+        heading: "Why Remote Construction Often Fails",
+        body: `
+Many Nigerians abroad dream of owning a home back home but struggle with poor contractor accountability, inconsistent reporting, and project delays.
+
+Without structured oversight, projects often exceed budget, miss timelines, and fail quality inspections.
+        `,
+      },
+
+      {
+        heading: "Start With Verified Documentation",
+        body: `
+Before construction begins, ensure land titles, surveys, allocation letters, and approvals have been independently verified.
+
+Legal due diligence is the foundation of a successful project.
+        `,
+      },
+
+      {
+        heading: "Establish Clear Milestones",
+        body: `
+Every project should be divided into measurable stages:
+
+• Foundation
+• Ground Floor Structure
+• Roofing
+• Mechanical & Electrical
+• Finishes
+• Handover
+
+Payments should be linked to milestone completion rather than arbitrary dates.
+        `,
+      },
+
+      {
+        heading: "Demand Visual Evidence",
+        body: `
+Diaspora clients should receive periodic drone footage, site photos, videos, and written reports.
+
+Visual reporting creates transparency and reduces uncertainty.
+        `,
+      },
+
+      {
+        heading: "Final Thoughts",
+        body: `
+Remote construction can be successful when supported by verified professionals, structured reporting, and transparent financial controls.
+
+The key is replacing trust-based management with process-based management.
+        `,
+      },
+    ],
   },
+
   {
+    id: "ART-002",
+    slug: "genuine-c-of-o-guide",
+
     tag: "LEGAL & TITLES",
+    category: "Legal & Titles",
+
+    title:
+      "What a Genuine Certificate of Occupancy Looks Like in 2025",
+
+    excerpt:
+      "Learn how to verify a Certificate of Occupancy and avoid common land title fraud schemes.",
+
+    author: "Ayinde Homes Legal Advisory Desk",
+
+    authorRole: "Property Documentation",
+
+    publishedAt: "June 2, 2025",
+
     minutes: 7,
-    title: "What a Genuine C of O Looks Like in 2025",
-    excerpt:
-      "Spot forged titles, governor's consent gaps, and the documentation your lawyer must verify.",
-    category: "Legal & Titles",
-  },
-  {
-    tag: "INVESTMENT ROI",
-    minutes: 9,
-    title: "Why Ibadan Outperformed Lagos for Land Yield Last Year",
-    excerpt:
-      "Comparative analysis of land appreciation across emerging corridors in the Southwest.",
-    category: "Investment ROI",
-  },
-  {
-    tag: "MARKET NEWS",
-    minutes: 4,
-    title: "Diaspora Remittance Flows Hit a New Real-Estate Record",
-    excerpt:
-      "How $20B in remittances is reshaping residential supply in Lagos and Abuja.",
-    category: "Market News",
-  },
-  {
-    tag: "CONSTRUCTION TIPS",
-    minutes: 6,
-    title: "Material Sourcing: The Real Cost of Premium Imports",
-    excerpt:
-      "When German fittings make sense — and when premium local craftsmanship wins.",
-    category: "Construction Tips",
-  },
-  {
-    tag: "LEGAL & TITLES",
-    minutes: 5,
-    title: "Power of Attorney: Drafting It Right From Abroad",
-    excerpt:
-      "Structure a POA your bank, lawyer and contractor will all accept the first time.",
-    category: "Legal & Titles",
+
+    image: riverpark_1,
+
+    featured: false,
+
+    seoTitle:
+      "How to Verify a Certificate of Occupancy in Nigeria",
+
+    seoDescription:
+      "A practical guide for diaspora investors on verifying land titles and property ownership.",
+
+    content: [
+      {
+        heading: "Understanding a Certificate of Occupancy",
+        body: `
+A Certificate of Occupancy confirms the government's recognition of a holder's right to occupy land.
+
+However, possessing a C of O alone does not eliminate the need for due diligence.
+        `,
+      },
+
+      {
+        heading: "Common Red Flags",
+        body: `
+Watch for:
+
+• Altered signatures
+• Missing survey references
+• Mismatched property descriptions
+• Unregistered transactions
+        `,
+      },
+
+      {
+        heading: "Verification Process",
+        body: `
+Always conduct searches at the relevant land registry and engage qualified legal professionals before purchase.
+        `,
+      },
+    ],
   },
 ];
 
