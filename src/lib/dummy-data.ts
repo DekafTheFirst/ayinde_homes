@@ -10,6 +10,18 @@ import house_3 from '@/assets/images/file_8.jpeg'
 import verification from '@/assets/images/verification.jpg'
 import investment from '@/assets/images/file_1.jpeg'
 import riverpark from '@/assets/images/21.jpeg'
+import riverpark_1 from '@/assets/images/file_20.jpeg'
+import riverpark_2 from '@/assets/images/25.jpeg'
+import riverpark_3 from '@/assets/images/22.jpeg'
+import riverpark_4 from '@/assets/images/23.jpeg'
+import riverpark_5 from '@/assets/images/24.jpeg'
+import agodi from '@/assets/images/file_14.jpeg'
+import agodi_2 from '@/assets/images/file_2.jpeg'
+import agodi_3 from '@/assets/images/file_10.jpeg'
+import carlton from '@/assets/images/file_17.jpeg'
+import carlton_2 from '@/assets/images/file_11.jpeg'
+import carlton_3 from '@/assets/images/file_9.jpeg'
+import carlton_4 from '@/assets/images/file_13.jpeg'
 
 
 export const media = {
@@ -54,7 +66,7 @@ export const projects = [
 
     completionTimeline: "Delivered",
 
-    photos: [house_2, house_2, house_2],
+    photos: [house_2, house_3, house],
 
     videos: [],
 
@@ -77,7 +89,7 @@ export const projects = [
     completion: 88,
     price: "₦145M+",
     badge: "SELLING FAST",
-    image: townhouses.url,
+    image: carlton,
 
     overview:
       "Carlton Gate Extension offers premium serviced plots and modern residences in one of Lagos' most desirable investment corridors.",
@@ -99,7 +111,7 @@ export const projects = [
 
     completionTimeline: "Q2 2027",
 
-    photos: [townhouses.url, townhouses.url, townhouses.url],
+    photos: [carlton, carlton_2, carlton_3, carlton_4],
 
     videos: [],
 
@@ -122,7 +134,7 @@ export const projects = [
     completion: 64,
     price: "₦420M+",
     badge: "FLAGSHIP",
-    image: villaBlue.url,
+    image: house_3,
 
     overview:
       "A flagship luxury development delivering contemporary architecture, premium finishes, and long-term investment value.",
@@ -143,7 +155,7 @@ export const projects = [
 
     completionTimeline: "Q4 2027",
 
-    photos: [villaBlue.url, villaBlue.url, villaBlue.url],
+    photos: [house_2, house_3, house],
 
     videos: [],
 
@@ -166,7 +178,7 @@ export const projects = [
     completion: 64,
     price: "₦420M+",
     badge: "FLAGSHIP",
-    image: villaBlue.url,
+    image: agodi,
 
     overview:
       "Agodi Estate combines modern living with strategic positioning, making it ideal for both owner-occupiers and investors.",
@@ -187,7 +199,7 @@ export const projects = [
 
     completionTimeline: "Q1 2027",
 
-    photos: [villaBlue.url, villaBlue.url, villaBlue.url],
+    photos: [agodi, agodi_2, agodi_3],
 
     videos: [],
 
@@ -210,7 +222,7 @@ export const projects = [
     completion: 100,
     price: "₦65M+",
     badge: "NEW",
-    image: villaRender.url,
+    image: riverpark,
 
     overview:
       "Riverpark Estate offers modern family homes in Abuja with excellent accessibility, infrastructure, and investment potential.",
@@ -231,7 +243,7 @@ export const projects = [
 
     completionTimeline: "Delivered",
 
-    photos: [villaRender.url, villaRender.url, villaRender.url],
+    photos: [riverpark,  riverpark_2, riverpark_3, riverpark_4, riverpark_5, riverpark_1,],
 
     videos: [],
 

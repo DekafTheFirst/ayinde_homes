@@ -52,7 +52,7 @@ export function SiteFooter() {
 
       <div className="border-t border-primary-foreground/10">
         <div className="container-x flex flex-col items-start justify-between gap-3 py-6 text-xs text-primary-foreground/55 sm:flex-row sm:items-center">
-          <span>© 2024 Ayinde Homes. All rights reserved. Heritage · Excellence · Trust.</span>
+          <span>© {new Date().getFullYear()} Ayinde Homes. All rights reserved. Heritage · Excellence · Trust.</span>
           <span className="flex gap-6">
             <a href="#" className="hover:text-gold">Terms</a>
             <a href="#" className="hover:text-gold">Privacy</a>
