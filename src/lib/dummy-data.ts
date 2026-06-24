@@ -24,6 +24,7 @@ export const media = {
 export const projects = [
   {
     id: "AH-2023-019",
+    slug: "kolapo",
     name: "Kolapo Ishola Estate",
     location: "Akobo, Ibadan",
     type: "Luxury Detached Villas",
@@ -31,10 +32,44 @@ export const projects = [
     completion: 100,
     price: "₦85M+",
     badge: "PREMIUM",
-    image: villaWhite.url,
+    image: house_2,
+
+    overview:
+      "Kolapo Ishola Estate is a premium residential development designed for discerning homeowners and diaspora investors seeking a secure, well-planned community in Ibadan.",
+
+    availableUnits: [
+      "4 Bedroom Detached Villas",
+      "5 Bedroom Detached Villas",
+      "Serviced Residential Plots",
+    ],
+
+    pricing: "Starting from ₦85,000,000",
+
+    paymentPlan:
+      "30% initial deposit with balance spread over 12 months.",
+
+    titleStatus: "Governor's Consent",
+
+    developmentStage: "Completed",
+
+    completionTimeline: "Delivered",
+
+    photos: [house_2, house_2, house_2],
+
+    videos: [],
+
+    features: [
+      "24/7 Security",
+      "Paved Roads",
+      "Drainage Infrastructure",
+      "Street Lighting",
+      "Recreational Spaces",
+    ],
   },
+
   {
     id: "AH-2024-051",
+    slug: "carlton",
     name: "Carlton Gate Extension",
     location: "Lekki Phase 1, Lagos",
     type: "Fully Serviced Estate",
@@ -43,9 +78,43 @@ export const projects = [
     price: "₦145M+",
     badge: "SELLING FAST",
     image: townhouses.url,
+
+    overview:
+      "Carlton Gate Extension offers premium serviced plots and modern residences in one of Lagos' most desirable investment corridors.",
+
+    availableUnits: [
+      "300sqm Plots",
+      "500sqm Plots",
+      "3 Bedroom Terraces",
+    ],
+
+    pricing: "Starting from ₦145,000,000",
+
+    paymentPlan:
+      "Flexible installment plan available over 18 months.",
+
+    titleStatus: "Certificate of Occupancy (C of O)",
+
+    developmentStage: "Infrastructure Ongoing",
+
+    completionTimeline: "Q2 2027",
+
+    photos: [townhouses.url, townhouses.url, townhouses.url],
+
+    videos: [],
+
+    features: [
+      "Gated Community",
+      "Reliable Power",
+      "Water Supply",
+      "Landscaped Environment",
+      "Smart Security",
+    ],
   },
+
   {
     id: "AH-2024-082",
+    slug: "rayfield",
     name: "Rayfield Development",
     location: "Monatan, Ibadan",
     type: "Luxury Detached Villas",
@@ -54,11 +123,42 @@ export const projects = [
     price: "₦420M+",
     badge: "FLAGSHIP",
     image: villaBlue.url,
-  },
 
+    overview:
+      "A flagship luxury development delivering contemporary architecture, premium finishes, and long-term investment value.",
+
+    availableUnits: [
+      "5 Bedroom Smart Villas",
+      "Luxury Duplexes",
+    ],
+
+    pricing: "Starting from ₦420,000,000",
+
+    paymentPlan:
+      "40% deposit and milestone-based construction payments.",
+
+    titleStatus: "Registered Deed of Assignment",
+
+    developmentStage: "Superstructure Stage",
+
+    completionTimeline: "Q4 2027",
+
+    photos: [villaBlue.url, villaBlue.url, villaBlue.url],
+
+    videos: [],
+
+    features: [
+      "Smart Home Integration",
+      "Swimming Pool",
+      "Clubhouse",
+      "Premium Finishes",
+      "Private Parking",
+    ],
+  },
 
   {
     id: "AH-2024-081",
+    slug: "agodi",
     name: "Agodi Estate",
     location: "Agodi, Ibadan",
     type: "Luxury Detached Villas",
@@ -67,22 +167,82 @@ export const projects = [
     price: "₦420M+",
     badge: "FLAGSHIP",
     image: villaBlue.url,
+
+    overview:
+      "Agodi Estate combines modern living with strategic positioning, making it ideal for both owner-occupiers and investors.",
+
+    availableUnits: [
+      "4 Bedroom Duplexes",
+      "5 Bedroom Duplexes",
+    ],
+
+    pricing: "Starting from ₦420,000,000",
+
+    paymentPlan:
+      "Flexible payment spread across construction milestones.",
+
+    titleStatus: "Governor's Consent",
+
+    developmentStage: "Finishing Stage",
+
+    completionTimeline: "Q1 2027",
+
+    photos: [villaBlue.url, villaBlue.url, villaBlue.url],
+
+    videos: [],
+
+    features: [
+      "Estate Security",
+      "Children's Park",
+      "Road Network",
+      "Water Treatment",
+      "Green Areas",
+    ],
   },
-
-
 
   {
     id: "AH-2025-008",
+    slug: "riverpark",
     name: "Riverpark Estate",
     location: "Lugbe, Abuja",
     type: "Semi-Detached Duplexes",
     status: "Completed",
-    completion: 12,
+    completion: 100,
     price: "₦65M+",
     badge: "NEW",
     image: villaRender.url,
-  },
 
+    overview:
+      "Riverpark Estate offers modern family homes in Abuja with excellent accessibility, infrastructure, and investment potential.",
+
+    availableUnits: [
+      "3 Bedroom Duplexes",
+      "4 Bedroom Duplexes",
+    ],
+
+    pricing: "Starting from ₦65,000,000",
+
+    paymentPlan:
+      "Outright purchase or 12-month installment option.",
+
+    titleStatus: "Certificate of Occupancy (C of O)",
+
+    developmentStage: "Completed",
+
+    completionTimeline: "Delivered",
+
+    photos: [villaRender.url, villaRender.url, villaRender.url],
+
+    videos: [],
+
+    features: [
+      "24/7 Security",
+      "Road Infrastructure",
+      "Power Backup",
+      "Shopping Area",
+      "Recreational Facilities",
+    ],
+  },
 ];
 
 export const home_services = [

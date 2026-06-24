@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-32 bg-forest-deep text-primary-foreground">
+    <footer className="bg-forest-deep text-primary-foreground">
       <div className="container-x grid gap-12 py-20 md:grid-cols-4">
         <div className="md:col-span-1">
           <div className="font-display text-2xl tracking-wide">AYINDE HOMES</div>

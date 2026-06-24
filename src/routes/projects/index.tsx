@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { projects } from "@/lib/dummy-data";
 
-export const Route = createFileRoute("/projectss/")({
+export const Route = createFileRoute("/projects/")({
   head: () => ({
     meta: [
       { title: "Projects — Ayinde Homes" },
@@ -103,8 +103,13 @@ function ProjectsPage() {
 
                 <div className="mt-auto flex items-end justify-between border-t border-border pt-5">
                   <span className="font-display text-xl text-primary">{p.price}</span>
-                  <Link to="/build-for-me" className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-accent">
-                    Enquire <ArrowUpRight className="h-3.5 w-3.5" />
+                  <Link
+                    to="/projects/$slug"
+                    params={{ slug: p.slug }}
+                    className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-[0.18em] text-primary hover:text-accent"
+                  >
+                    View Details
+                    <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
                 </div>
               </div>

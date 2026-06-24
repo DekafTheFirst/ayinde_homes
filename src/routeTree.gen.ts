@@ -11,12 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ResourcesRouteImport } from './routes/resources'
-import { Route as ProjectDetailsRouteImport } from './routes/project-details'
 import { Route as ProjectAuditRouteImport } from './routes/project-audit'
 import { Route as BuildForMeRouteImport } from './routes/build-for-me'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ProjectssIndexRouteImport } from './routes/projectss/index'
+import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
+import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -26,11 +26,6 @@ const ServicesRoute = ServicesRouteImport.update({
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjectDetailsRoute = ProjectDetailsRouteImport.update({
-  id: '/project-details',
-  path: '/project-details',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectAuditRoute = ProjectAuditRouteImport.update({
@@ -53,9 +48,14 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjectssIndexRoute = ProjectssIndexRouteImport.update({
-  id: '/projectss/',
-  path: '/projectss/',
+const ProjectsIndexRoute = ProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/projects/$slug',
+  path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -64,20 +64,20 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/build-for-me': typeof BuildForMeRoute
   '/project-audit': typeof ProjectAuditRoute
-  '/project-details': typeof ProjectDetailsRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
-  '/projectss/': typeof ProjectssIndexRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/build-for-me': typeof BuildForMeRoute
   '/project-audit': typeof ProjectAuditRoute
-  '/project-details': typeof ProjectDetailsRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
-  '/projectss': typeof ProjectssIndexRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects': typeof ProjectsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -85,10 +85,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/build-for-me': typeof BuildForMeRoute
   '/project-audit': typeof ProjectAuditRoute
-  '/project-details': typeof ProjectDetailsRoute
   '/resources': typeof ResourcesRoute
   '/services': typeof ServicesRoute
-  '/projectss/': typeof ProjectssIndexRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/': typeof ProjectsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -97,30 +97,30 @@ export interface FileRouteTypes {
     | '/about'
     | '/build-for-me'
     | '/project-audit'
-    | '/project-details'
     | '/resources'
     | '/services'
-    | '/projectss/'
+    | '/projects/$slug'
+    | '/projects/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/build-for-me'
     | '/project-audit'
-    | '/project-details'
     | '/resources'
     | '/services'
-    | '/projectss'
+    | '/projects/$slug'
+    | '/projects'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/build-for-me'
     | '/project-audit'
-    | '/project-details'
     | '/resources'
     | '/services'
-    | '/projectss/'
+    | '/projects/$slug'
+    | '/projects/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -128,10 +128,10 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BuildForMeRoute: typeof BuildForMeRoute
   ProjectAuditRoute: typeof ProjectAuditRoute
-  ProjectDetailsRoute: typeof ProjectDetailsRoute
   ResourcesRoute: typeof ResourcesRoute
   ServicesRoute: typeof ServicesRoute
-  ProjectssIndexRoute: typeof ProjectssIndexRoute
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+  ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -148,13 +148,6 @@ declare module '@tanstack/react-router' {
       path: '/resources'
       fullPath: '/resources'
       preLoaderRoute: typeof ResourcesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/project-details': {
-      id: '/project-details'
-      path: '/project-details'
-      fullPath: '/project-details'
-      preLoaderRoute: typeof ProjectDetailsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/project-audit': {
@@ -185,11 +178,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projectss/': {
-      id: '/projectss/'
-      path: '/projectss'
-      fullPath: '/projectss/'
-      preLoaderRoute: typeof ProjectssIndexRouteImport
+    '/projects/': {
+      id: '/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof ProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/projects/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -200,10 +200,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BuildForMeRoute: BuildForMeRoute,
   ProjectAuditRoute: ProjectAuditRoute,
-  ProjectDetailsRoute: ProjectDetailsRoute,
   ResourcesRoute: ResourcesRoute,
   ServicesRoute: ServicesRoute,
-  ProjectssIndexRoute: ProjectssIndexRoute,
+  ProjectsSlugRoute: ProjectsSlugRoute,
+  ProjectsIndexRoute: ProjectsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
