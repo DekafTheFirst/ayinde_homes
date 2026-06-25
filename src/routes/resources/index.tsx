@@ -2,26 +2,52 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowUpRight, Clock } from "lucide-react";
 import { articles } from "@/lib/dummy-data";
+import { sanityClient } from "@/lib/sanity";
+import { urlFor } from "@/lib/sanity-image";
 
 export const Route = createFileRoute("/resources/")({
-  head: () => ({
-    meta: [
-      { title: "Resources — Ayinde Homes" },
-      { name: "description", content: "Expert perspectives on the Nigerian real estate landscape — guides, legal explainers and market analysis for the diaspora." },
-      { property: "og:title", content: "Resources & Insights — Ayinde Homes" },
-      { property: "og:description", content: "Guides, legal explainers, and ROI analysis for the diaspora investor." },
-    ],
-  }),
+  loader: async () => {
+    const articles = await sanityClient.fetch(`
+      *[_type == "post"] | order(publishedAt desc) {
+        _id,
+        title,
+        slug,
+        excerpt,
+        category,
+        tag,
+        minutes,
+        publishedAt,
+        featured,
+        image
+      }
+    `);
+
+    return { articles };
+  },
+
   component: ResourcesPage,
 });
-
 const categories = ["All Articles", "Legal & Titles", "Investment ROI", "Construction Tips", "Market News"] as const;
 
 function ResourcesPage() {
+
+  const { articles } = Route.useLoaderData();
+
+  console.log("Articles from loader:", articles);
   const [cat, setCat] = useState<(typeof categories)[number]>("All Articles");
-  const visible = cat === "All Articles" ? articles : articles.filter((a) => a.category === cat);
-  const featured = visible[0];
-  const rest = visible.slice(1);
+
+  const visible =
+    cat === "All Articles"
+      ? articles
+      : articles.filter((a: any) => a.category === cat);
+
+  const featured =
+    visible.find((a: any) => a.featured) || visible[0];
+
+  const rest = visible.filter(
+    (a: any) => a._id !== featured?._id
+  );
+
 
   return (
     <>
@@ -50,8 +76,16 @@ function ResourcesPage() {
         <section className="container-x py-16">
           <article className="group grid gap-8 overflow-hidden rounded-sm border border-border bg-card lg:grid-cols-12">
             <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-forest to-forest-deep lg:col-span-7 lg:aspect-auto">
-              <div className="absolute inset-0 opacity-25" style={{ backgroundImage: featured.image ? `url(${featured.image})` : "linear-gradient(135deg, transparent 40%, var(--gold) 100%)", backgroundSize: "cover", backgroundPosition: 'center' }} />
-              <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-sm bg-gold px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-gold-foreground">
+              <div
+                className="absolute inset-0 opacity-25"
+                style={{
+                  backgroundImage: featured.image
+                    ? `url(${urlFor(featured.image).width(1200).url()})`
+                    : "linear-gradient(135deg, transparent 40%, var(--gold) 100%)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />              <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-sm bg-gold px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-gold-foreground">
                 {featured.tag}
               </div>
             </div>
@@ -63,7 +97,7 @@ function ResourcesPage() {
               <p className="mt-4 text-muted-foreground">{featured.excerpt}</p>
               <Link
                 to="/resources/$slug"
-                params={{ slug: featured.slug }}
+                params={{ slug: featured.slug?.current }}
                 className="mt-8 inline-flex w-fit items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-primary hover:text-accent"
               >
                 Read Full Guide
@@ -76,10 +110,10 @@ function ResourcesPage() {
 
       <section className="container-x pb-24">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {rest.map((a) => (
+          {rest.map((a:any) => (
             <article key={a.title} className="group flex flex-col overflow-hidden rounded-sm border border-border bg-card transition-shadow hover:shadow-lg">
               <div className="relative aspect-[3/2] overflow-hidden bg-gradient-to-br from-secondary via-cream to-secondary">
-                <div className="absolute inset-0" style={{ backgroundImage: a.image ? `url(${a.image})` : "linear-gradient(135deg, transparent 40%, var(--gold) 100%)", backgroundSize: "cover", backgroundPosition: 'center' }} />
+                <div className="absolute inset-0" style={{ backgroundImage: a.image ? `url(${urlFor(a.image).width(800).url()})` : "linear-gradient(135deg, transparent 40%, var(--gold) 100%)", backgroundSize: "cover", backgroundPosition: 'center' }} />
                 <div className="absolute left-4 top-4 inline-flex items-center rounded-sm bg-background/95 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
                   {a.tag}
                 </div>

@@ -243,7 +243,7 @@ export const projects = [
 
     completionTimeline: "Delivered",
 
-    photos: [riverpark,  riverpark_2, riverpark_3, riverpark_4, riverpark_5, riverpark_1,],
+    photos: [riverpark, riverpark_2, riverpark_3, riverpark_4, riverpark_5, riverpark_1,],
 
     videos: [],
 

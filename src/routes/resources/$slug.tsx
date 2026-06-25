@@ -1,15 +1,56 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Clock } from "lucide-react";
 import { articles } from "@/lib/dummy-data";
-
+import { sanityClient } from "@/lib/sanity";
+import { PortableText } from "@portabletext/react";
 export const Route = createFileRoute("/resources/$slug")({
+  loader: async ({ params }) => {
+    const article = await sanityClient.fetch(
+      `
+      *[_type == "post" && slug.current == $slug][0]{
+        _id,
+        title,
+        slug,
+        excerpt,
+        tag,
+        category,
+        author,
+        publishedAt,
+        minutes,
+        image,
+        body
+      }
+      `,
+      {
+        slug: params.slug,
+      }
+    );
+
+    const relatedArticles = await sanityClient.fetch(
+      `
+      *[_type == "post" && slug.current != $slug][0...3]{
+        title,
+        slug,
+        excerpt,
+        tag
+      }
+      `,
+      {
+        slug: params.slug,
+      }
+    );
+
+    return {
+      article,
+      relatedArticles,
+    };
+  },
+
   component: ArticleDetailsPage,
 });
 
 function ArticleDetailsPage() {
-  const { slug } = Route.useParams();
-
-  const article = articles.find((a) => a.slug === slug);
+  const { article, relatedArticles } = Route.useLoaderData();
 
   if (!article) {
     return (
@@ -20,10 +61,6 @@ function ArticleDetailsPage() {
       </section>
     );
   }
-
-  const relatedArticles = articles
-    .filter((a) => a.slug !== article.slug)
-    .slice(0, 3);
 
   return (
     <>
@@ -76,18 +113,8 @@ function ArticleDetailsPage() {
             {article.excerpt}
           </p>
 
-          <div className="mt-16 space-y-14">
-            {article.content.map((section) => (
-              <div key={section.heading}>
-                <h2 className="font-display text-3xl text-primary">
-                  {section.heading}
-                </h2>
-
-                <div className="mt-5 whitespace-pre-line leading-8 text-muted-foreground">
-                  {section.body}
-                </div>
-              </div>
-            ))}
+          <div className="prose prose-lg mt-16 max-w-none">
+            <PortableText value={article.body} />
           </div>
         </div>
       </section>
@@ -123,11 +150,11 @@ function ArticleDetailsPage() {
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {relatedArticles.map((item) => (
+          {relatedArticles.map((item: any) => (
             <Link
-              key={item.slug}
+              key={item.slug.current}
               to="/resources/$slug"
-              params={{ slug: item.slug }}
+              params={{ slug: item.slug.current }}
               className="group rounded-sm border border-border bg-card p-6 transition-shadow hover:shadow-lg"
             >
               <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-accent">
