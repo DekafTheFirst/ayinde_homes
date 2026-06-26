@@ -126,7 +126,7 @@ function AboutPage() {
             </p>
           </div>
           <div className="flex flex-col gap-3 lg:col-span-5">
-            <Link to="/build-for-me" className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary-foreground">
+            <Link to="/build-for-me/start" className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary-foreground">
               Book a Consultation <ArrowRight className="h-4 w-4" />
             </Link>
             <Link to="/projects" className="inline-flex items-center justify-center gap-2 rounded-sm border border-primary px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-primary">

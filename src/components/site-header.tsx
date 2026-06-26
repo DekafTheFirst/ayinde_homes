@@ -43,7 +43,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/build-for-me"
+            to="/build-for-me/start"
             className="hidden rounded-sm bg-primary px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground transition-colors hover:bg-accent sm:inline-flex"
           >
             Get Started

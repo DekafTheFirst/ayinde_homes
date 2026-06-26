@@ -18,6 +18,7 @@ import { Route as ResourcesIndexRouteImport } from './routes/resources/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects/index'
 import { Route as ResourcesSlugRouteImport } from './routes/resources/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects/$slug'
+import { Route as BuildForMeStartRouteImport } from './routes/build-for-me/start'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -64,13 +65,19 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuildForMeStartRoute = BuildForMeStartRouteImport.update({
+  id: '/start',
+  path: '/start',
+  getParentRoute: () => BuildForMeRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/build-for-me': typeof BuildForMeRoute
+  '/build-for-me': typeof BuildForMeRouteWithChildren
   '/project-audit': typeof ProjectAuditRoute
   '/services': typeof ServicesRoute
+  '/build-for-me/start': typeof BuildForMeStartRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -79,9 +86,10 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/build-for-me': typeof BuildForMeRoute
+  '/build-for-me': typeof BuildForMeRouteWithChildren
   '/project-audit': typeof ProjectAuditRoute
   '/services': typeof ServicesRoute
+  '/build-for-me/start': typeof BuildForMeStartRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/projects': typeof ProjectsIndexRoute
@@ -91,9 +99,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/build-for-me': typeof BuildForMeRoute
+  '/build-for-me': typeof BuildForMeRouteWithChildren
   '/project-audit': typeof ProjectAuditRoute
   '/services': typeof ServicesRoute
+  '/build-for-me/start': typeof BuildForMeStartRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/projects/': typeof ProjectsIndexRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/build-for-me'
     | '/project-audit'
     | '/services'
+    | '/build-for-me/start'
     | '/projects/$slug'
     | '/resources/$slug'
     | '/projects/'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/build-for-me'
     | '/project-audit'
     | '/services'
+    | '/build-for-me/start'
     | '/projects/$slug'
     | '/resources/$slug'
     | '/projects'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/build-for-me'
     | '/project-audit'
     | '/services'
+    | '/build-for-me/start'
     | '/projects/$slug'
     | '/resources/$slug'
     | '/projects/'
@@ -138,7 +150,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  BuildForMeRoute: typeof BuildForMeRoute
+  BuildForMeRoute: typeof BuildForMeRouteWithChildren
   ProjectAuditRoute: typeof ProjectAuditRoute
   ServicesRoute: typeof ServicesRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
@@ -212,13 +224,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/build-for-me/start': {
+      id: '/build-for-me/start'
+      path: '/start'
+      fullPath: '/build-for-me/start'
+      preLoaderRoute: typeof BuildForMeStartRouteImport
+      parentRoute: typeof BuildForMeRoute
+    }
   }
 }
+
+interface BuildForMeRouteChildren {
+  BuildForMeStartRoute: typeof BuildForMeStartRoute
+}
+
+const BuildForMeRouteChildren: BuildForMeRouteChildren = {
+  BuildForMeStartRoute: BuildForMeStartRoute,
+}
+
+const BuildForMeRouteWithChildren = BuildForMeRoute._addFileChildren(
+  BuildForMeRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  BuildForMeRoute: BuildForMeRoute,
+  BuildForMeRoute: BuildForMeRouteWithChildren,
   ProjectAuditRoute: ProjectAuditRoute,
   ServicesRoute: ServicesRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,

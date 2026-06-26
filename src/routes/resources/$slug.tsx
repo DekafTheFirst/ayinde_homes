@@ -51,7 +51,7 @@ export const Route = createFileRoute("/resources/$slug")({
 
 function ArticleDetailsPage() {
   const { article, relatedArticles } = Route.useLoaderData();
-
+console.log('article:', article);
   if (!article) {
     return (
       <section className="container-x py-24">
